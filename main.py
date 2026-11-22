@@ -1,1 +1,22 @@
-print("Biblioteca V1")
+from models.livro import Livro
+
+# Criando livros
+livro1 = Livro("Dom Casmurro", "Machado de Assis", 1899)
+livro2 = Livro("1984", "George Orwell", 1949)
+livro3 = Livro("O Hobbit", "J. R. R. Tolkien", 1937)
+
+# Criando uma lista de livros
+livros = [
+    livro1,
+    livro2,
+    livro3
+]
+
+# Mostrar todos os livros da lista e seus detalhes.
+print("======== LIVROS ========")
+print()
+for livro in livros:
+    livro.mostrar_dados()
+    print()
+
+print("========================")
