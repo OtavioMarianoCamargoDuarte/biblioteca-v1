@@ -1,38 +1,47 @@
+from sys import remote_exec
+
 from services.biblioteca import (
     buscar_livro_por_titulo,
-    cadastrar_livro,
     criar_livros_iniciais,
     listar_livros,
-    remover_livro,
+    cadastrar_livro,
+    remover_livro
 )
 
-# Criando uma lista de livros
 livros = criar_livros_iniciais()
 
-# Mostrar todos os livros da lista e seus detalhes.
-listar_livros(livros)
+while True:
+    print("========== MENU ==========")
+    print("[1] - Listar livros")
+    print("[2] - Buscar livro")
+    print("[3] - Cadastrar livro")
+    print("[4] - Remover livro")
+    print("[0] - Sair")
+    print("==========================")
 
-# Buscando livro pelo titulo
-buscador_titulo = input("Digite o nome do livro: ")
+    opcao = input("Escolha: ")
 
-# Percorrendo lista para ver se livro existe ou não
-livro_encontrado = buscar_livro_por_titulo(livros, buscador_titulo)
-if livro_encontrado:
-    livro_encontrado.mostrar_dados()
+    if opcao == "0":
+        print("PROGRAMA FINALIZADO!")
+        break
 
-else:
-    print("Livro não encontrado.")
+    elif opcao == "1":
+        listar_livros(livros)
 
-# Criando um novo livro para a biblioteca
-cadastrar_livro(livros)
+    elif opcao == "2":
+        titulo = input("Digite o titulo do livro: ")
+        resultado = buscar_livro_por_titulo(livros, titulo)
 
-listar_livros(livros)
-print()
+        if resultado:
+            resultado.mostrar_dados()
+        else:
+            print("Livro não encontrado.")
 
-# Removendo um livro da biblioteca (caso ele exista).
-remover_livro(livros)
+    elif opcao == "3":
+        cadastrar_livro(livros)
 
-print()
-listar_livros(livros)
+    elif opcao == "4":
+        remover_livro(livros)
 
-
+    else:
+        print("Opção inválida.")
