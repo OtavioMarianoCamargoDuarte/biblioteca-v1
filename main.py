@@ -25,7 +25,7 @@ print("========================")
 buscador_titulo = input("Digite o nome do livro: ")
 titulo_encontrado = False
 
-#Percorrendo lista para ver se livro existe ou não
+# Percorrendo lista para ver se livro existe ou não
 for livro in livros:
     if buscador_titulo.lower().strip() == livro.titulo.lower().strip():
         titulo_encontrado = True
@@ -36,3 +36,20 @@ for livro in livros:
 
 if not titulo_encontrado:
     print("Livro não encontrado.")
+print()
+
+# Criando um novo livro para a biblioteca
+print("====== CRIANDO NOVO LIVRO ======")
+novo_titulo = input("Título: ")
+novo_autor = input("Autor: ")
+novo_ano = int(input("Ano: "))
+novo_livro = Livro(novo_titulo, novo_autor, novo_ano)
+livros.append(novo_livro)
+
+print("======== LIVROS ========")
+print()
+for livro in livros:
+    livro.mostrar_dados()
+    print()
+
+print("========================")
