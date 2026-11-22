@@ -9,6 +9,13 @@ def listar_livros(livros) -> None:
         print()
     print("========================")
 
+def buscar_livro_por_titulo(livros, titulo):
+    for livro in livros:
+        if livro.titulo.lower().strip() == titulo.lower().strip():
+            return livro
+
+    return None
+
 # Criando livros
 livro1 = Livro("Dom Casmurro", "Machado de Assis", 1899)
 livro2 = Livro("1984", "George Orwell", 1949)
@@ -26,20 +33,17 @@ listar_livros(livros)
 
 # Buscando livro pelo titulo
 buscador_titulo = input("Digite o nome do livro: ")
-titulo_encontrado = False
 
 # Percorrendo lista para ver se livro existe ou não
-for livro in livros:
-    if buscador_titulo.lower().strip() == livro.titulo.lower().strip():
-        titulo_encontrado = True
-        print()
-        print("Livro encontrado!\n")
-        livro.mostrar_dados()
-        break
+livro_encontrado = buscar_livro_por_titulo(livros,buscador_titulo)
+if livro_encontrado:
+    livro_encontrado.mostrar_dados()
 
-if not titulo_encontrado:
+else:
     print("Livro não encontrado.")
-print()
+
+
+
 
 # Criando um novo livro para a biblioteca
 print("====== CRIANDO NOVO LIVRO ======")
