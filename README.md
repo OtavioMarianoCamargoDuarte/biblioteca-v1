@@ -97,4 +97,4 @@ Planejadas para futuras versões:
 
 ## 👨‍💻 Autor
 
-Desenvolvido por Otávio Mariano Camargo Duarte durante os estudos de Python.
+Desenvolvido por Otavio Mariano Camargo Duarte durante os estudos de Python.
