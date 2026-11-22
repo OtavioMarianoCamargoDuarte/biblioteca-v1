@@ -1,3 +1,4 @@
+from pydoc import ModuleScanner
 from sys import remote_exec
 
 from services.biblioteca import (
@@ -5,19 +6,14 @@ from services.biblioteca import (
     criar_livros_iniciais,
     listar_livros,
     cadastrar_livro,
-    remover_livro
+    remover_livro,
+    mostrar_menu
 )
 
 livros = criar_livros_iniciais()
 
 while True:
-    print("========== MENU ==========")
-    print("[1] - Listar livros")
-    print("[2] - Buscar livro")
-    print("[3] - Cadastrar livro")
-    print("[4] - Remover livro")
-    print("[0] - Sair")
-    print("==========================")
+    mostrar_menu()
 
     opcao = input("Escolha: ")
 

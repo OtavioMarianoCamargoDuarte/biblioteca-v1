@@ -52,3 +52,12 @@ def criar_livros_iniciais() -> list[Livro]:
 
 def normalizar_texto(texto: str) -> str:
     return texto.lower().strip()
+
+def mostrar_menu() -> None:
+    print("========== MENU ==========")
+    print("[1] - Listar livros")
+    print("[2] - Buscar livro")
+    print("[3] - Cadastrar livro")
+    print("[4] - Remover livro")
+    print("[0] - Sair")
+    print("==========================")
