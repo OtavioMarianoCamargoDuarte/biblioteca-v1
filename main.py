@@ -53,3 +53,31 @@ for livro in livros:
     print()
 
 print("========================")
+print()
+
+# Removendo um livro da biblioteca (caso ele exista).
+print("====== REMOVENDO UM LIVRO ======")
+buscador_titulo = input("Digite o nome do livro: ")
+titulo_encontrado = False
+
+for livro in livros:
+    if buscador_titulo.lower().strip() == livro.titulo.lower().strip():
+        titulo_encontrado = True
+        print("Livro encontrado.")
+        livros.remove(livro)
+        print("Livro removido com sucesso.")
+        break
+
+if not titulo_encontrado:
+    print("Livro não foi encontrado em nossa biblioteca.")
+
+print()
+print("======== LIVROS ========")
+print()
+for livro in livros:
+    livro.mostrar_dados()
+    print()
+
+print("========================")
+
+
