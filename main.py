@@ -1,13 +1,10 @@
-from pydoc import ModuleScanner
-from sys import remote_exec
-
 from services.biblioteca import (
     buscar_livro_por_titulo,
+    cadastrar_livro,
     criar_livros_iniciais,
     listar_livros,
-    cadastrar_livro,
+    mostrar_menu,
     remover_livro,
-    mostrar_menu
 )
 
 livros = criar_livros_iniciais()
