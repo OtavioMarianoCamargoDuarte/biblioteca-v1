@@ -1,5 +1,14 @@
 from models.livro import Livro
 
+
+def listar_livros(livros) -> None:
+    print("======== LIVROS ========")
+    print()
+    for livro in livros:
+        livro.mostrar_dados()
+        print()
+    print("========================")
+
 # Criando livros
 livro1 = Livro("Dom Casmurro", "Machado de Assis", 1899)
 livro2 = Livro("1984", "George Orwell", 1949)
@@ -13,13 +22,7 @@ livros = [
 ]
 
 # Mostrar todos os livros da lista e seus detalhes.
-print("======== LIVROS ========")
-print()
-for livro in livros:
-    livro.mostrar_dados()
-    print()
-
-print("========================")
+listar_livros(livros)
 
 # Buscando livro pelo titulo
 buscador_titulo = input("Digite o nome do livro: ")
@@ -46,13 +49,7 @@ novo_ano = int(input("Ano: "))
 novo_livro = Livro(novo_titulo, novo_autor, novo_ano)
 livros.append(novo_livro)
 
-print("======== LIVROS ========")
-print()
-for livro in livros:
-    livro.mostrar_dados()
-    print()
-
-print("========================")
+listar_livros(livros)
 print()
 
 # Removendo um livro da biblioteca (caso ele exista).
@@ -72,12 +69,6 @@ if not titulo_encontrado:
     print("Livro não foi encontrado em nossa biblioteca.")
 
 print()
-print("======== LIVROS ========")
-print()
-for livro in livros:
-    livro.mostrar_dados()
-    print()
-
-print("========================")
+listar_livros(livros)
 
 
