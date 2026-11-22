@@ -20,3 +20,19 @@ for livro in livros:
     print()
 
 print("========================")
+
+# Buscando livro pelo titulo
+buscador_titulo = input("Digite o nome do livro: ")
+titulo_encontrado = False
+
+#Percorrendo lista para ver se livro existe ou não
+for livro in livros:
+    if buscador_titulo.lower().strip() == livro.titulo.lower().strip():
+        titulo_encontrado = True
+        print()
+        print("Livro encontrado!\n")
+        livro.mostrar_dados()
+        break
+
+if not titulo_encontrado:
+    print("Livro não encontrado.")
