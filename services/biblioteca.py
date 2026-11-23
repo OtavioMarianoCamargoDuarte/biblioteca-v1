@@ -34,6 +34,14 @@ def listar_livros_disponiveis(livros) -> None:
             livro.mostrar_dados()
             print()
 
+def listar_livros_emprestados(livros) -> None:
+    print("===== Livros emprestados =====")
+
+    for livro in livros:
+        if not livro.esta_disponivel():
+            livro.mostrar_dados()
+            print()
+
 def buscar_livro_por_titulo(
     livros: list[Livro],
     titulo: str,
@@ -93,6 +101,7 @@ def mostrar_menu() -> None:
     print("[5] - Emprestar livro")
     print("[6] - Devolver livro")
     print("[7] - Listar livros disponíveis")
+    print("[8] - Listar livros emprestados")
     print("[0] - Sair")
     print("==========================")
 

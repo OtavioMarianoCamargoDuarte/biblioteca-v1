@@ -1,12 +1,12 @@
 from models.livro import Livro
 from services.biblioteca import (
-    buscar_livro_por_titulo,
     cadastrar_livro,
     converter_json_para_livros,
     converter_livros_para_json,
     ler_livros_json,
     listar_livros,
     listar_livros_disponiveis,
+    listar_livros_emprestados,
     mostrar_menu,
     obter_livro_do_usuario,
     remover_livro,
@@ -66,6 +66,9 @@ while True:
 
     elif opcao == "7":
         listar_livros_disponiveis(livros)
+
+    elif opcao == "8":
+        listar_livros_emprestados(livros)
 
     else:
         print("Opção inválida.")
