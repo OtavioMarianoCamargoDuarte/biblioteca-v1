@@ -2,16 +2,19 @@
     {
         "titulo": "Harry Potter",
         "autor": "J. K. Rowling",
-        "ano": 1997
+        "ano": 1997,
+        "disponivel": true
     },
     {
         "titulo": "Dom Quixote",
         "autor": "Miguel de Cervantes",
-        "ano": 1605
+        "ano": 1605,
+        "disponivel": true
     },
     {
         "titulo": "Memórias Póstumas de Brás Cubas",
         "autor": "Machado de Assis",
-        "ano": 1881
+        "ano": 1881,
+        "disponivel": true
     }
 ]

@@ -41,7 +41,7 @@ def cadastrar_livro(livros) -> None:
     novo_titulo = input("Título: ").strip()
     novo_autor = input("Autor: ").strip()
     novo_ano = int(input("Ano: "))
-    
+
     novo_livro = Livro(novo_titulo, novo_autor, novo_ano)
 
     livros.append(novo_livro)
@@ -91,5 +91,5 @@ def converter_json_para_livros(dados_json: list) -> list:
     dados = []
 
     for dado in dados_json:
-        dados.append(Livro(dado["titulo"], dado["autor"], dado["ano"]))
+        dados.append(Livro(dado["titulo"], dado["autor"], dado["ano"], dado["disponivel"]))
     return dados
