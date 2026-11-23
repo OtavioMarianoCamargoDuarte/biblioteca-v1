@@ -1,5 +1,6 @@
 from models.livro import Livro
 from services.biblioteca import (
+    buscar_livros_por_autor,
     cadastrar_livro,
     converter_json_para_livros,
     converter_livros_para_json,
@@ -73,6 +74,18 @@ while True:
 
     elif opcao == "9":
         mostrar_relatorio(livros)
-        
+
+    elif opcao == "10":
+        autor = input("Digite o nome do autor: ")
+        print()
+        resultado = buscar_livros_por_autor(livros, autor)
+
+        if resultado:
+            for livro in resultado:
+                livro.mostrar_dados()
+                print()
+        else:
+            print("Autor não encontrado.")
+
     else:
         print("Opção inválida.")

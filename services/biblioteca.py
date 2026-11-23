@@ -52,6 +52,15 @@ def buscar_livro_por_titulo(
 
     return None
 
+def buscar_livros_por_autor(livros, autor):
+    resultado = []
+
+    for livro in livros:
+        if normalizar_texto(livro.autor) == normalizar_texto(autor):
+            resultado.append(livro)
+
+    return resultado
+
 def obter_livro_do_usuario(livros: list[Livro]):
     titulo = input("Digite o titulo do livro: ")
     resultado = buscar_livro_por_titulo(livros, titulo)
@@ -103,6 +112,7 @@ def mostrar_menu() -> None:
     print("[7] - Listar livros disponíveis")
     print("[8] - Listar livros emprestados")
     print("[9] - Mostrar relatório")
+    print("[10] - Buscar por autor")
     print("[0] - Sair")
     print("==========================")
 
