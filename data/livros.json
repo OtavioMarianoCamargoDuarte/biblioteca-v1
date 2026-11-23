@@ -1,11 +1,5 @@
 [
     {
-        "titulo": "Harry Potter",
-        "autor": "J. K. Rowling",
-        "ano": 1997,
-        "disponivel": true
-    },
-    {
         "titulo": "Dom Quixote",
         "autor": "Miguel de Cervantes",
         "ano": 1605,
@@ -16,5 +10,17 @@
         "autor": "Machado de Assis",
         "ano": 1881,
         "disponivel": true
+    },
+    {
+        "titulo": "Aladin",
+        "autor": "Disney",
+        "ano": 2001,
+        "disponivel": true
+    },
+    {
+        "titulo": "Jujuba",
+        "autor": "A hora de aventura",
+        "ano": 1995,
+        "disponivel": false
     }
 ]

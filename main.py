@@ -3,10 +3,12 @@ from services.biblioteca import (
     buscar_livro_por_titulo,
     cadastrar_livro,
     converter_json_para_livros,
+    converter_livros_para_json,
     ler_livros_json,
     listar_livros,
     mostrar_menu,
     remover_livro,
+    salvar_livros_json,
 )
 
 dados_json = ler_livros_json()
@@ -41,6 +43,17 @@ while True:
 
     elif opcao == "4":
         remover_livro(livros)
+
+    elif opcao == "5":
+        titulo = input("Digite o titulo do livro: ")
+        resultado = buscar_livro_por_titulo(livros, titulo)
+
+        if resultado is not None:
+            resultado.emprestar()
+            dados = converter_livros_para_json(livros)
+            salvar_livros_json(dados)
+        else:
+            print("Livro não encontrado.")
 
     else:
         print("Opção inválida.")

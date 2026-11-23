@@ -77,6 +77,7 @@ def mostrar_menu() -> None:
     print("[2] - Buscar livro")
     print("[3] - Cadastrar livro")
     print("[4] - Remover livro")
+    print("[5] - Emprestar livro")
     print("[0] - Sair")
     print("==========================")
 
