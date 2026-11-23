@@ -102,6 +102,7 @@ def mostrar_menu() -> None:
     print("[6] - Devolver livro")
     print("[7] - Listar livros disponíveis")
     print("[8] - Listar livros emprestados")
+    print("[9] - Mostrar relatório")
     print("[0] - Sair")
     print("==========================")
 
@@ -118,3 +119,22 @@ def converter_json_para_livros(dados_json: list) -> list:
     for dado in dados_json:
         dados.append(Livro(dado["titulo"], dado["autor"], dado["ano"], dado["disponivel"]))
     return dados
+
+def mostrar_relatorio(livros) -> None:
+    print("===== Relatório =====")
+
+    total_livros = len(livros)
+
+    contador_disponiveis = 0
+    contador_emprestados = 0
+
+    for livro in livros:
+        if livro.esta_disponivel():
+            contador_disponiveis += 1
+        else:
+            contador_emprestados += 1
+
+    print(f"Total de livros: {total_livros}")
+    print(f"Disponíveis: {contador_disponiveis}")
+    print(f"Emprestados: {contador_emprestados}")
+    print("====================")

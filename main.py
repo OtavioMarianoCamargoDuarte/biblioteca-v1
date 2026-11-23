@@ -8,6 +8,7 @@ from services.biblioteca import (
     listar_livros_disponiveis,
     listar_livros_emprestados,
     mostrar_menu,
+    mostrar_relatorio,
     obter_livro_do_usuario,
     remover_livro,
     salvar_livros_json,
@@ -70,5 +71,8 @@ while True:
     elif opcao == "8":
         listar_livros_emprestados(livros)
 
+    elif opcao == "9":
+        mostrar_relatorio(livros)
+        
     else:
         print("Opção inválida.")
