@@ -52,7 +52,8 @@ def buscar_livro_por_titulo(
 
     return None
 
-def buscar_livros_por_autor(livros, autor):
+def buscar_livros_por_autor(livros: list[Livro],autor: str) -> list[Livro]:
+
     resultado = []
 
     for livro in livros:
@@ -61,7 +62,8 @@ def buscar_livros_por_autor(livros, autor):
 
     return resultado
 
-def obter_livro_do_usuario(livros: list[Livro]):
+def obter_livro_do_usuario(livros: list[Livro]) -> Livro | None:
+
     titulo = input("Digite o titulo do livro: ")
     resultado = buscar_livro_por_titulo(livros, titulo)
     return resultado
@@ -100,21 +102,6 @@ def remover_livro(livros) -> None:
 
 def normalizar_texto(texto: str) -> str:
     return texto.lower().strip()
-
-def mostrar_menu() -> None:
-    print("========== MENU ==========")
-    print("[1] - Listar livros")
-    print("[2] - Buscar livro")
-    print("[3] - Cadastrar livro")
-    print("[4] - Remover livro")
-    print("[5] - Emprestar livro")
-    print("[6] - Devolver livro")
-    print("[7] - Listar livros disponíveis")
-    print("[8] - Listar livros emprestados")
-    print("[9] - Mostrar relatório")
-    print("[10] - Buscar por autor")
-    print("[0] - Sair")
-    print("==========================")
 
 def converter_livros_para_json(livros: list[Livro]) -> list:
     dados = []
