@@ -7,6 +7,7 @@ from services.biblioteca import (
     ler_livros_json,
     listar_livros,
     mostrar_menu,
+    obter_livro_do_usuario,
     remover_livro,
     salvar_livros_json,
 )
@@ -30,8 +31,7 @@ while True:
         listar_livros(livros)
 
     elif opcao == "2":
-        titulo = input("Digite o titulo do livro: ")
-        resultado = buscar_livro_por_titulo(livros, titulo)
+        resultado = obter_livro_do_usuario(livros)
 
         if resultado:
             resultado.mostrar_dados()
@@ -45,8 +45,7 @@ while True:
         remover_livro(livros)
 
     elif opcao == "5":
-        titulo = input("Digite o titulo do livro: ")
-        resultado = buscar_livro_por_titulo(livros, titulo)
+        resultado = obter_livro_do_usuario(livros)
 
         if resultado is not None:
             resultado.emprestar()
@@ -56,8 +55,7 @@ while True:
             print("Livro não encontrado.")
 
     elif opcao == "6":
-        titulo = input("Digite o titulo do livro: ")
-        resultado = buscar_livro_por_titulo(livros, titulo)
+        resultado = obter_livro_do_usuario(livros)
 
         if resultado is not None:
             resultado.devolver()

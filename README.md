@@ -10,8 +10,11 @@ Atualmente o sistema permite:
 - ✅ Buscar livros por título
 - ✅ Cadastrar novos livros
 - ✅ Remover livros
+- ✅ Emprestar livros
+- ✅ Devolver livros
 - ✅ Menu interativo no terminal
 - ✅ Persistência de dados em JSON
+
 
 ## Persistência de Dados
 
@@ -97,10 +100,6 @@ python main.py
 
 Planejadas para futuras versões:
 
-- [ ] Salvar livros em JSON
-- [ ] Carregar livros automaticamente ao iniciar
-- [ ] Sistema de empréstimos
-- [ ] Sistema de devoluções
 - [ ] Relatórios
 - [ ] Cadastro de usuários
 

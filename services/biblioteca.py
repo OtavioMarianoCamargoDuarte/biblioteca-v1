@@ -36,6 +36,11 @@ def buscar_livro_por_titulo(
 
     return None
 
+def obter_livro_do_usuario(livros: list[Livro]):
+    titulo = input("Digite o titulo do livro: ")
+    resultado = buscar_livro_por_titulo(livros, titulo)
+    return resultado
+
 def cadastrar_livro(livros) -> None:
     print("====== CRIANDO NOVO LIVRO ======")
     novo_titulo = input("Título: ").strip()
