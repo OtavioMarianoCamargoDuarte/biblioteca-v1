@@ -1,0 +1,17 @@
+[
+    {
+        "titulo": "Harry Potter",
+        "autor": "J. K. Rowling",
+        "ano": 1997
+    },
+    {
+        "titulo": "Dom Quixote",
+        "autor": "Miguel de Cervantes",
+        "ano": 1605
+    },
+    {
+        "titulo": "Memórias Póstumas de Brás Cubas",
+        "autor": "Machado de Assis",
+        "ano": 1881
+    }
+]

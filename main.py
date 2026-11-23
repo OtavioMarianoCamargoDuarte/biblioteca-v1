@@ -1,13 +1,18 @@
 from services.biblioteca import (
     buscar_livro_por_titulo,
     cadastrar_livro,
-    criar_livros_iniciais,
+    converter_json_para_livros,
+    ler_livros_json,
     listar_livros,
     mostrar_menu,
     remover_livro,
 )
 
-livros = criar_livros_iniciais()
+dados_json = ler_livros_json()
+
+livros = converter_json_para_livros(
+    dados_json
+)
 
 while True:
     mostrar_menu()

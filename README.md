@@ -11,6 +11,15 @@ Atualmente o sistema permite:
 - ✅ Cadastrar novos livros
 - ✅ Remover livros
 - ✅ Menu interativo no terminal
+- ✅ Persistência de dados em JSON
+
+## Persistência de Dados
+
+Os livros são armazenados em:
+
+data/livros.json
+
+Os dados permanecem salvos mesmo após o encerramento do programa.
 
 ## 🛠️ Tecnologias Utilizadas
 

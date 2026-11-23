@@ -8,3 +8,10 @@ class Livro:
         print(f"Titulo: {self.titulo}")
         print(f"Autor: {self.autor}")
         print(f"Ano: {self.ano}")
+
+    def para_dicionario(self) -> dict:
+        return {
+            "titulo" : self.titulo,
+            "autor" : self.autor,
+            "ano" : self.ano
+        }

@@ -1,5 +1,22 @@
+import json
+
 from models.livro import Livro
 
+
+def ler_livros_json() -> list:
+    with open("data/livros.json", "r", encoding="utf-8") as arquivo:
+        dados = json.load(arquivo)
+
+    return dados
+
+def salvar_livros_json(dados: list) -> None:
+    with open("data/livros.json", "w", encoding="utf-8") as arquivo:
+        json.dump(
+            dados,
+            arquivo,
+            ensure_ascii=False,
+            indent=4
+        )
 
 def listar_livros(livros) -> None:
     print("======== LIVROS ========")
@@ -21,11 +38,15 @@ def buscar_livro_por_titulo(
 
 def cadastrar_livro(livros) -> None:
     print("====== CRIANDO NOVO LIVRO ======")
-    novo_titulo = input("Título: ")
-    novo_autor = input("Autor: ")
+    novo_titulo = input("Título: ").strip()
+    novo_autor = input("Autor: ").strip()
     novo_ano = int(input("Ano: "))
+    
     novo_livro = Livro(novo_titulo, novo_autor, novo_ano)
+
     livros.append(novo_livro)
+    dados = converter_livros_para_json(livros)
+    salvar_livros_json(dados)
 
 def remover_livro(livros) -> None:
     print("====== REMOVENDO UM LIVRO ======")
@@ -37,18 +58,15 @@ def remover_livro(livros) -> None:
             titulo_encontrado = True
             print("Livro encontrado.")
             livros.remove(livro)
+
+            dados = converter_livros_para_json(livros)
+            salvar_livros_json(dados)
+
             print("Livro removido com sucesso.")
             break
 
     if not titulo_encontrado:
         print("Livro não foi encontrado em nossa biblioteca.")
-
-def criar_livros_iniciais() -> list[Livro]:
-    return [
-        Livro("Dom Casmurro", "Machado de Assis", 1899),
-        Livro("1984", "George Orwell", 1949),
-        Livro("O Hobbit", "J. R. R. Tolkien", 1937)
-    ]
 
 def normalizar_texto(texto: str) -> str:
     return texto.lower().strip()
@@ -61,3 +79,17 @@ def mostrar_menu() -> None:
     print("[4] - Remover livro")
     print("[0] - Sair")
     print("==========================")
+
+def converter_livros_para_json(livros: list[Livro]) -> list:
+    dados = []
+
+    for livro in livros:
+        dados.append(livro.para_dicionario())
+    return dados
+
+def converter_json_para_livros(dados_json: list) -> list:
+    dados = []
+
+    for dado in dados_json:
+        dados.append(Livro(dado["titulo"], dado["autor"], dado["ano"]))
+    return dados
