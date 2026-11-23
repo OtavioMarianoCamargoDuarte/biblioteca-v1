@@ -55,5 +55,16 @@ while True:
         else:
             print("Livro não encontrado.")
 
+    elif opcao == "6":
+        titulo = input("Digite o titulo do livro: ")
+        resultado = buscar_livro_por_titulo(livros, titulo)
+
+        if resultado is not None:
+            resultado.devolver()
+            dados = converter_livros_para_json(livros)
+            salvar_livros_json(dados)
+        else:
+            print("Livro não encontrado.")
+
     else:
         print("Opção inválida.")

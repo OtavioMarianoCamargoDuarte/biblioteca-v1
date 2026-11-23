@@ -22,5 +22,11 @@
         "autor": "A hora de aventura",
         "ano": 1995,
         "disponivel": false
+    },
+    {
+        "titulo": "Harry Potter",
+        "autor": "J. K. Rowling",
+        "ano": 2003,
+        "disponivel": true
     }
 ]
