@@ -1,9 +1,9 @@
-from models.livro import Livro
 from services.biblioteca import (
     buscar_livros_por_autor,
     cadastrar_livro,
     converter_json_para_livros,
     converter_livros_para_json,
+    criar_tabela_livros,
     ler_livros_json,
     listar_livros,
     listar_livros_disponiveis,
@@ -17,17 +17,15 @@ from services.biblioteca import (
 from services.interface import (
     aguardar_usuario,
     limpar_tela,
+    mostrar_erro,
+    mostrar_aviso,
     mostrar_menu,
-    mostrar_titulo
+    mostrar_titulo,
 )
-
-
 
 dados_json = ler_livros_json()
 
 livros = converter_json_para_livros(dados_json)
-
-mostrar_titulo()
 
 while True:
 
@@ -39,81 +37,140 @@ while True:
     opcao = input()
 
     if opcao == "0":
-        print("PROGRAMA FINALIZADO!")
+        mostrar_aviso("PROGRAMA FINALIZADO")
         break
 
     elif opcao == "1":
+
+        limpar_tela()
+        mostrar_titulo()
+
         listar_livros(livros)
+
         aguardar_usuario()
 
     elif opcao == "2":
+
+        limpar_tela()
+        mostrar_titulo()
+
         resultado = obter_livro_do_usuario(livros)
 
         if resultado:
-            resultado.mostrar_dados()
+            criar_tabela_livros(
+                [resultado],
+                "Livro Encontrado"
+            )
         else:
-            print("Livro não encontrado.")
+            mostrar_erro("Livro não encontrado.")
 
         aguardar_usuario()
 
     elif opcao == "3":
+
+        limpar_tela()
+        mostrar_titulo()
+
         cadastrar_livro(livros)
+
         aguardar_usuario()
 
     elif opcao == "4":
+
+        limpar_tela()
+        mostrar_titulo()
+
         remover_livro(livros)
+
         aguardar_usuario()
 
     elif opcao == "5":
+
+        limpar_tela()
+        mostrar_titulo()
+
         resultado = obter_livro_do_usuario(livros)
 
         if resultado is not None:
             resultado.emprestar()
+
             dados = converter_livros_para_json(livros)
             salvar_livros_json(dados)
+
         else:
-            print("Livro não encontrado.")
+            mostrar_erro("Livro não encontrado.")
 
         aguardar_usuario()
 
     elif opcao == "6":
+
+        limpar_tela()
+        mostrar_titulo()
+
         resultado = obter_livro_do_usuario(livros)
 
         if resultado is not None:
             resultado.devolver()
+
             dados = converter_livros_para_json(livros)
             salvar_livros_json(dados)
+
         else:
-            print("Livro não encontrado.")
+            mostrar_erro("Livro não encontrado.")
 
         aguardar_usuario()
 
     elif opcao == "7":
+
+        limpar_tela()
+        mostrar_titulo()
+
         listar_livros_disponiveis(livros)
+
         aguardar_usuario()
 
     elif opcao == "8":
+
+        limpar_tela()
+        mostrar_titulo()
+
         listar_livros_emprestados(livros)
+
         aguardar_usuario()
 
     elif opcao == "9":
+
+        limpar_tela()
+        mostrar_titulo()
+
         mostrar_relatorio(livros)
+
         aguardar_usuario()
 
     elif opcao == "10":
-        autor = input("Digite o nome do autor: ")
-        print()
 
-        resultado = buscar_livros_por_autor(livros, autor)
+        limpar_tela()
+        mostrar_titulo()
+
+        autor = input("Digite o nome do autor: ")
+
+        resultado = buscar_livros_por_autor(
+            livros,
+            autor
+        )
 
         if resultado:
-            for livro in resultado:
-                livro.mostrar_dados()
-                print()
+            criar_tabela_livros(
+                resultado,
+                "Livros do Autor"
+            )
         else:
-            print("Autor não encontrado.")
+            mostrar_erro("Autor não encontrado.")
 
         aguardar_usuario()
 
     else:
-        print("Opção inválida.")
+
+        mostrar_erro("Opção inválida.")
+
+        aguardar_usuario()

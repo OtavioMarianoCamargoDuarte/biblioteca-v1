@@ -23,14 +23,14 @@ class Livro:
             "disponivel" : self.disponivel
         }
 
-    def emprestar(self) -> None:
+    def emprestar(self) -> bool:
         if self.disponivel:
             self.disponivel = False
             print(f"Livro: {self.titulo} emprestado com sucesso.")
         else:
             print("Livro já está emprestado.")
 
-    def devolver(self) -> None:
+    def devolver(self) -> bool:
         if not self.disponivel:
             self.disponivel = True
             print(f"Livro: {self.titulo} devolvido com sucesso.")

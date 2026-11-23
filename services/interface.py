@@ -4,16 +4,15 @@ from rich.align import Align
 from rich.text import Text
 
 
+
 console = Console()
 
 
 def limpar_tela() -> None:
     console.clear()
 
-
 def aguardar_usuario() -> None:
     input("\nPressione ENTER para continuar...")
-
 
 def mostrar_titulo() -> None:
     painel = Panel(
@@ -27,7 +26,6 @@ def mostrar_titulo() -> None:
     )
 
     console.print(painel)
-
 
 def mostrar_menu() -> None:
 
@@ -71,3 +69,21 @@ def mostrar_menu() -> None:
     console.print(painel_menu)
 
     console.print("\n👉 Escolha uma opção:",style="bold yellow")
+
+def mostrar_erro(mensagem: str) -> None:
+    
+    painel = Panel(mensagem,title = "Erro",border_style = "bold red",width = 50)
+
+    console.print(painel)
+
+def mostrar_sucesso(mensagem: str) -> None:
+
+    painel = Panel(mensagem, title = "Sucesso", border_style = "bold green", width = 50)
+
+    console.print(painel)
+
+def mostrar_aviso(mensagem: str) -> None:
+
+    painel = Panel(mensagem, title = "Aviso", border_style = "bold yellow", width = 50)
+
+    console.print(painel)

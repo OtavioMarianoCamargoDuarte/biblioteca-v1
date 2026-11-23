@@ -1,6 +1,8 @@
 import json
 
 from models.livro import Livro
+from rich.table import Table
+from services.interface import console
 
 
 def ler_livros_json() -> list:
@@ -19,28 +21,47 @@ def salvar_livros_json(dados: list) -> None:
         )
 
 def listar_livros(livros) -> None:
-    print("======== LIVROS ========")
-    print()
+    criar_tabela_livros(livros, "Livros da Biblioteca")
+
+def criar_tabela_livros(livros: list[Livro],titulo_tabela: str) -> None:
+    tabela = Table(title = titulo_tabela, show_lines = True)
+
+    tabela.add_column("Título", style = "bold cyan", min_width = 30)
+
+    tabela.add_column("Autor", style = "bold green", min_width = 25)
+
+    tabela.add_column("Ano", style = "bold yellow")
+
+    tabela.add_column("Status", style = "bold magenta")
+
     for livro in livros:
-        livro.mostrar_dados()
-        print()
-    print("========================")
+
+        if livro.esta_disponivel():
+            status = "✅ Disponível"
+        else:
+            status = "📕 Emprestado"
+
+        tabela.add_row(livro.titulo, livro.autor, str(livro.ano), status)
+
+    console.print(tabela, justify = "center")
 
 def listar_livros_disponiveis(livros) -> None:
-    print("===== Livros disponíveis =====")
+    livros_disponiveis = []
 
     for livro in livros:
         if livro.esta_disponivel():
-            livro.mostrar_dados()
-            print()
+            livros_disponiveis.append(livro)
+
+    criar_tabela_livros(livros_disponiveis, "Livros Disponíveis")
 
 def listar_livros_emprestados(livros) -> None:
-    print("===== Livros emprestados =====")
+    livros_emprestados = []
 
     for livro in livros:
         if not livro.esta_disponivel():
-            livro.mostrar_dados()
-            print()
+            livros_emprestados.append(livro)
+
+    criar_tabela_livros(livros_emprestados, "Livros Emprestados")
 
 def buscar_livro_por_titulo(
     livros: list[Livro],
@@ -118,7 +139,11 @@ def converter_json_para_livros(dados_json: list) -> list:
     return dados
 
 def mostrar_relatorio(livros) -> None:
-    print("===== Relatório =====")
+    tabela = Table(title="Relatório da Biblioteca")
+
+    tabela.add_column("Métrica",style="bold cyan")
+
+    tabela.add_column("Quantidade",style="bold green")
 
     total_livros = len(livros)
 
@@ -131,7 +156,10 @@ def mostrar_relatorio(livros) -> None:
         else:
             contador_emprestados += 1
 
-    print(f"Total de livros: {total_livros}")
-    print(f"Disponíveis: {contador_disponiveis}")
-    print(f"Emprestados: {contador_emprestados}")
-    print("====================")
+    tabela.add_row("Total de livros", str(total_livros))
+
+    tabela.add_row("Disponíveis", str(contador_disponiveis))
+
+    tabela.add_row("Emprestados", str(contador_emprestados))
+
+    console.print(tabela)
