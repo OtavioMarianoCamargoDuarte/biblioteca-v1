@@ -6,12 +6,12 @@ from services.biblioteca import (
     converter_livros_para_json,
     ler_livros_json,
     listar_livros,
+    listar_livros_disponiveis,
     mostrar_menu,
     obter_livro_do_usuario,
     remover_livro,
     salvar_livros_json,
 )
-
 dados_json = ler_livros_json()
 
 livros = converter_json_para_livros(
@@ -63,6 +63,9 @@ while True:
             salvar_livros_json(dados)
         else:
             print("Livro não encontrado.")
+
+    elif opcao == "7":
+        listar_livros_disponiveis(livros)
 
     else:
         print("Opção inválida.")
