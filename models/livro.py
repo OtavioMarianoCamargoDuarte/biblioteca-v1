@@ -26,16 +26,17 @@ class Livro:
     def emprestar(self) -> bool:
         if self.disponivel:
             self.disponivel = False
-            print(f"Livro: {self.titulo} emprestado com sucesso.")
-        else:
-            print("Livro já está emprestado.")
+            return True
+        
+        return False
 
     def devolver(self) -> bool:
         if not self.disponivel:
             self.disponivel = True
-            print(f"Livro: {self.titulo} devolvido com sucesso.")
-        else:
-            print("Livro não foi emprestado.")
+            return True
+
+        return False
+
 
     def esta_disponivel(self) -> bool:
         return self.disponivel

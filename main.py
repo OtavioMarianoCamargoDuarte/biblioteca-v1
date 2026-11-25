@@ -20,6 +20,7 @@ from services.interface import (
     mostrar_erro,
     mostrar_aviso,
     mostrar_menu,
+    mostrar_sucesso,
     mostrar_titulo,
 )
 
@@ -92,10 +93,14 @@ while True:
         resultado = obter_livro_do_usuario(livros)
 
         if resultado is not None:
-            resultado.emprestar()
 
-            dados = converter_livros_para_json(livros)
-            salvar_livros_json(dados)
+            if resultado.emprestar():
+                mostrar_sucesso("Livro emprestado com sucesso.")
+                dados = converter_livros_para_json(livros)
+                salvar_livros_json(dados)
+
+            else:
+                mostrar_erro("Livro já está emprestado.")
 
         else:
             mostrar_erro("Livro não encontrado.")
@@ -110,10 +115,14 @@ while True:
         resultado = obter_livro_do_usuario(livros)
 
         if resultado is not None:
-            resultado.devolver()
 
-            dados = converter_livros_para_json(livros)
-            salvar_livros_json(dados)
+            if resultado.devolver():
+                mostrar_sucesso("Livro devolvido com sucesso.")
+                dados = converter_livros_para_json(livros)
+                salvar_livros_json(dados)
+
+            else:
+                mostrar_erro("Livro já foi devolvido.")
 
         else:
             mostrar_erro("Livro não encontrado.")
