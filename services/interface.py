@@ -87,3 +87,10 @@ def mostrar_aviso(mensagem: str) -> None:
     painel = Panel(mensagem, title = "Aviso", border_style = "bold yellow", width = 50)
 
     console.print(painel)
+
+def obter_dados_livro() -> tuple[str, str, int]:
+    titulo = input("Título: ").strip()
+    autor = input("Autor: ").strip()
+    ano = int(input("Ano: "))
+
+    return titulo, autor, ano

@@ -10,6 +10,7 @@ from services.biblioteca import (
     listar_livros_emprestados,
     mostrar_relatorio,
     obter_livro_do_usuario,
+    obter_titulo_livro,
     remover_livro,
     salvar_livros_json,
 )
@@ -22,6 +23,7 @@ from services.interface import (
     mostrar_menu,
     mostrar_sucesso,
     mostrar_titulo,
+    obter_dados_livro,
 )
 
 dados_json = ler_livros_json()
@@ -68,11 +70,15 @@ while True:
         aguardar_usuario()
 
     elif opcao == "3":
-
         limpar_tela()
+
         mostrar_titulo()
 
-        cadastrar_livro(livros)
+        titulo, autor, ano = (obter_dados_livro())
+
+        cadastrar_livro(livros, titulo, autor, ano)
+
+        mostrar_sucesso("Livro cadastrado com sucesso.")
 
         aguardar_usuario()
 
@@ -81,7 +87,15 @@ while True:
         limpar_tela()
         mostrar_titulo()
 
-        remover_livro(livros)
+        titulo = obter_titulo_livro()
+
+        if remover_livro(livros, titulo):
+
+            mostrar_sucesso("Livro removido com sucesso.")
+
+        else:
+
+            mostrar_erro("Livro não encontrado.")
 
         aguardar_usuario()
 

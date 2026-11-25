@@ -37,6 +37,5 @@ class Livro:
 
         return False
 
-
     def esta_disponivel(self) -> bool:
         return self.disponivel

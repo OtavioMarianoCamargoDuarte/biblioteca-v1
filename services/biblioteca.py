@@ -89,37 +89,35 @@ def obter_livro_do_usuario(livros: list[Livro]) -> Livro | None:
     resultado = buscar_livro_por_titulo(livros, titulo)
     return resultado
 
-def cadastrar_livro(livros) -> None:
-    print("====== CRIANDO NOVO LIVRO ======")
-    novo_titulo = input("Título: ").strip()
-    novo_autor = input("Autor: ").strip()
-    novo_ano = int(input("Ano: "))
+def cadastrar_livro(livros: list[Livro], titulo: str, autor: str, ano: int) -> None:
 
-    novo_livro = Livro(novo_titulo, novo_autor, novo_ano)
+    novo_livro = Livro(titulo, autor, ano)
 
     livros.append(novo_livro)
+
     dados = converter_livros_para_json(livros)
+
     salvar_livros_json(dados)
 
-def remover_livro(livros) -> None:
-    print("====== REMOVENDO UM LIVRO ======")
-    buscador_titulo = input("Digite o nome do livro: ")
-    titulo_encontrado = False
-
+def remover_livro(livros: list[Livro], titulo: str) -> bool:
     for livro in livros:
-        if normalizar_texto(buscador_titulo) == normalizar_texto(livro.titulo):
-            titulo_encontrado = True
-            print("Livro encontrado.")
+
+        if normalizar_texto(titulo) == normalizar_texto(livro.titulo):
+
             livros.remove(livro)
 
             dados = converter_livros_para_json(livros)
+
             salvar_livros_json(dados)
 
-            print("Livro removido com sucesso.")
-            break
+            return True
 
-    if not titulo_encontrado:
-        print("Livro não foi encontrado em nossa biblioteca.")
+    return False
+
+def obter_titulo_livro() -> str:
+    titulo = input("Digite o título do livro: ").strip()
+
+    return titulo
 
 def normalizar_texto(texto: str) -> str:
     return texto.lower().strip()
