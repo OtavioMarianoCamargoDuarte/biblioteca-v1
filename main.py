@@ -12,6 +12,7 @@ from services.biblioteca import (
     obter_livro_do_usuario,
     obter_titulo_livro,
     remover_livro,
+    salvar_biblioteca,
     salvar_livros_json,
 )
 
@@ -110,8 +111,7 @@ while True:
 
             if resultado.emprestar():
                 mostrar_sucesso("Livro emprestado com sucesso.")
-                dados = converter_livros_para_json(livros)
-                salvar_livros_json(dados)
+                salvar_biblioteca(livros)
 
             else:
                 mostrar_erro("Livro já está emprestado.")
@@ -132,8 +132,7 @@ while True:
 
             if resultado.devolver():
                 mostrar_sucesso("Livro devolvido com sucesso.")
-                dados = converter_livros_para_json(livros)
-                salvar_livros_json(dados)
+                salvar_biblioteca(livros)
 
             else:
                 mostrar_erro("Livro já foi devolvido.")

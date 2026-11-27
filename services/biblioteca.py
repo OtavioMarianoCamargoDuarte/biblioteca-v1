@@ -13,12 +13,7 @@ def ler_livros_json() -> list:
 
 def salvar_livros_json(dados: list) -> None:
     with open("data/livros.json", "w", encoding="utf-8") as arquivo:
-        json.dump(
-            dados,
-            arquivo,
-            ensure_ascii=False,
-            indent=4
-        )
+        json.dump(dados,arquivo,ensure_ascii=False,indent=4)
 
 def listar_livros(livros) -> None:
     criar_tabela_livros(livros, "Livros da Biblioteca")
@@ -63,10 +58,7 @@ def listar_livros_emprestados(livros) -> None:
 
     criar_tabela_livros(livros_emprestados, "Livros Emprestados")
 
-def buscar_livro_por_titulo(
-    livros: list[Livro],
-    titulo: str,
-):
+def buscar_livro_por_titulo(livros: list[Livro],titulo: str,):
     for livro in livros:
         if normalizar_texto(livro.titulo) == normalizar_texto(titulo):
             return livro
@@ -74,7 +66,6 @@ def buscar_livro_por_titulo(
     return None
 
 def buscar_livros_por_autor(livros: list[Livro],autor: str) -> list[Livro]:
-
     resultado = []
 
     for livro in livros:
@@ -84,20 +75,16 @@ def buscar_livros_por_autor(livros: list[Livro],autor: str) -> list[Livro]:
     return resultado
 
 def obter_livro_do_usuario(livros: list[Livro]) -> Livro | None:
-
     titulo = input("Digite o titulo do livro: ")
     resultado = buscar_livro_por_titulo(livros, titulo)
     return resultado
 
 def cadastrar_livro(livros: list[Livro], titulo: str, autor: str, ano: int) -> None:
-
     novo_livro = Livro(titulo, autor, ano)
 
     livros.append(novo_livro)
 
-    dados = converter_livros_para_json(livros)
-
-    salvar_livros_json(dados)
+    salvar_biblioteca(livros)
 
 def remover_livro(livros: list[Livro], titulo: str) -> bool:
     for livro in livros:
@@ -106,9 +93,7 @@ def remover_livro(livros: list[Livro], titulo: str) -> bool:
 
             livros.remove(livro)
 
-            dados = converter_livros_para_json(livros)
-
-            salvar_livros_json(dados)
+            salvar_biblioteca(livros)
 
             return True
 
@@ -161,3 +146,7 @@ def mostrar_relatorio(livros) -> None:
     tabela.add_row("Emprestados", str(contador_emprestados))
 
     console.print(tabela)
+
+def salvar_biblioteca(livros: list[Livro]) -> None:
+        dados = converter_livros_para_json(livros)
+        salvar_livros_json(dados)
