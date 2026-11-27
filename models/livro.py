@@ -5,16 +5,6 @@ class Livro:
         self.ano = ano
         self.disponivel = disponivel
 
-    def mostrar_dados(self) -> None:
-        print(f"Titulo: {self.titulo}")
-        print(f"Autor: {self.autor}")
-        print(f"Ano: {self.ano}")
-        
-        if self.disponivel:
-            print("Status: Disponível")
-        else:
-            print("Status: Emprestado")
-
     def para_dicionario(self) -> dict:
         return {
             "titulo" : self.titulo,

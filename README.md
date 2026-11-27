@@ -14,6 +14,11 @@ Atualmente o sistema permite:
 - ✅ Devolver livros
 - ✅ Menu interativo no terminal
 - ✅ Persistência de dados em JSON
+- ✅ Buscar por autor
+- ✅ Relatório da biblioteca
+- ✅ Listar livros disponíveis
+- ✅ Listar livros emprestados
+- ✅ Interface com Rich
 
 
 ## Persistência de Dados
